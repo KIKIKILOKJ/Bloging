@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+body, html {
+    height: 50%;
+    font-family: sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: white;
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    max-width: 150px;
+    padding: 16px;
+}
+
+.btn {
+    background-color: blue;
+     padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    color: white;
+    opacity: 1;
+    font-style: italic;
+}
+.btn:hover {
+    opacity: 1;
+}
+h1{
+    font-style: italic;
+}
+</style>
+<div class="container">
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-6">
+    <div class="card ">
+
+      <!-- Content -->
+      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+        <div>
+          <h1 class="card-title pt-2"><strong>{{post.title}}</strong></h1>
+          <p style="font-size:13px;text-align: justify"> {{post.description|truncate(425)}} </p>
+            <a href="/post/{{post.id}}" class="white-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
+          <a href="{{url_for('main.comment',id = post.id)}}" class="btn btn-primary"> Add a comment/View comments</a>
+        </div>
+        
+      </div>
+    
+    </div>
+    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+        <ul class="list-unstyled list-inline font-small">
+          <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{post.posted}}</li>
+          <input type=hidden value="{{ next or '' }}" name=next>
+        </ul>
+      </div>
+      <hr>
+    </div>
+                
+                
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

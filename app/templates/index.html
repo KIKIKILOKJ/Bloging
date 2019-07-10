@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+   
+{% endblock %}
+<!-- Content block -->
+
+{% block content %}
+<section>
+    <div class="container">
+            <div class="row">
+        <div class="col-md-8 mb-5">
+            <h1>The Blog App</h1>
+            <hr>
+            <h3>Hello!! WELCOME TO THE BLOG APP</h3>
+            <hr>
+            <br>
+
+            <p>Here you are able to provide your blogs to the internet and others can post comments on them but first ensure that you create an account with us
+            </p>
+
+        </div>
+        <br>
+        <div class="col-md-4 mb-5">
+            <h2>Contact Us</h2>
+            <hr>
+            <address>
+
+          <br>KASABUNI | KENYA
+          <br>
+        </address>
+        <address>
+          <abbr title="Phone">Phone:</abbr>
+          0717871486
+          <br>
+          <abbr title="Email">Email:petermax2004@gmail.com</abbr>
+          <a href="mailto:#"></a>
+        </address>
+        </div>
+    </div>
+
+            
+        <a class="btn btn-success btn-sm text-center" style="margin-bottom: 10px;"  href="{{url_for('main.new_post')}}">Write a new Post</a>
+        </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="conatiner">
+        <div class="row align-items-center" style="text-align:center;justify-content:center;">
+            <div class="col-md-6">
+                {{macro.displayPosts(posts)}}
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock%}
